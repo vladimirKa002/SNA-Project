@@ -1,0 +1,54 @@
+.title_text{
+    font-size: 25px;
+}
+.input_elem{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    text-align: center;
+
+    background: transparent;
+    padding: 0;
+    width: 80%;
+    vertical-align: bottom;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px 11px 5px 11px;
+    border-width: 1px;
+}
+.input_elem.width{
+    margin-top: 5px;
+    width: 150px;
+}
+.input_elem.width.left{
+    margin-left: 10px;
+}
+
+.input_button{
+    cursor: pointer;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 18px;
+
+    background-color: #81ab75;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 5px 11px 5px 11px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.input_button:hover {
+    color: white;
+    background: #434343;
+}
+
+.text_name{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 25px;
+}
+.text_welcome{
+    padding: 12px;
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 25px;
+}

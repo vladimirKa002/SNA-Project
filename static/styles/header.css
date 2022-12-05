@@ -1,0 +1,38 @@
+#header {
+  width:100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  background-color:#88b77b;
+  font-family: Century Gothic,Arial,Helvetica,sans-serif;
+  color:white;
+  padding: 12px;
+}
+
+#controls_header {
+  width:100%;
+  height: 60px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}
+
+.header_item{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    color: white;
+    padding: 12px;
+}
+.header_item:hover{
+    color: #f60;
+    cursor:pointer;
+}

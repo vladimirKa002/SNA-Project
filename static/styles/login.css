@@ -1,0 +1,39 @@
+html, body{
+	background: #e2e6e9;
+}
+
+.title_text_block{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    color: #f60;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.block_sign_in_out{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.center_block{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    height: 370px;
+    width: 350px;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.center_block.short{
+    height: 270px;
+}

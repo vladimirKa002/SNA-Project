@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inno Courses</title>
+    <script src="./static/scripts/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="./static/scripts/header.js"></script>
+
+    <link rel="stylesheet" type="text/css" href=".\static\styles\course.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\header.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\controls.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+
+</head>
+<body>
+<div>
+<div id="header">
+    <div class="text_name">Inno courses</div>
+</div>
+<div id="controls_header">
+    <div onclick="logout()" class="header_item">Logout</div>
+</div>
+<script type="text/javascript">
+    function load_course(course_id){
+        window.location.href = '/course?course_id=' + course_id;
+    }
+</script>
+<div class="block_horizontal">
+    <div class="text_welcome">Welcome, {{data.user_name}}!</div>
+</div>
+<div class="courses_view">
+    {%for course in data.courses%}
+        <div onclick="load_course({{course.id}})" class="course_item">
+            <div class="topic_name">
+                {{course.name}}
+            </div>
+            <br>
+            <div class="topic_text">
+                {{course.description}}
+                <br>
+                <br>
+                {{(data.courses_progress[course.id])|round | int}}% complete
+            </div>
+        </div>
+    {%endfor%}
+</div>
+</div>
+</body>
+</html>

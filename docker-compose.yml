@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    build: ./
+    command: python main.py run -h 0.0.0.0
+    networks:
+      - internal
+    depends_on:
+      - db
+  nginx:
+    build:
+      dockerfile: nginx/Dockerfile
+      context: .
+    ports:
+      - 5000:80
+    depends_on:
+      - app
+    networks:
+      - internal
+  db:
+    image: postgres:13.2
+    environment:
+      POSTGRES_DB: "sna_project"
+      POSTGRES_USER: "sna_user"
+      POSTGRES_PASSWORD: "sna_password"
+    restart: "no"
+    volumes:
+      - "db:/var/lib/postgresql/data"
+    networks:
+      - internal
+
+
+volumes:
+  db:
+
+networks:
+  internal:

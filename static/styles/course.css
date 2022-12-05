@@ -1,0 +1,29 @@
+.block_horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.topic_name{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color: #f60;
+}
+
+.topic_text{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 16px;
+}
+
+.quiz_text{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    color: #f60;
+}
+
+#not_found{
+    font-family: Century Gothic,Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    padding:12px;
+}

@@ -1,0 +1,44 @@
+.vertical-menu {
+  font-family: Century Gothic,Arial,Helvetica,sans-serif;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  left:5;
+}
+
+.vertical-menu.course {
+  padding: 12px; /* Add some padding */
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #d8d8d8;
+}
+
+.vertical-menu.item {
+  background-color: #eee; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu.item:hover {
+  cursor: pointer;
+  background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu.item.selected {
+  border-style: solid;
+  border-color: black;
+}
+
+.vertical-menu.item.finished {
+  background-color: #04AA6D; /* Add a green color to the "active/current" link */
+  color: white;
+}
+
+.vertical-menu.item.selected.finished {
+  background-color: #04AA6D; /* Add a green color to the "active/current" link */
+  border-style: solid;
+  border-color: black;
+  color: white;
+}

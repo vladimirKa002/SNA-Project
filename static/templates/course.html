@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Course</title>
+    <script src="./static/scripts/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="./static/scripts/header.js"></script>
+
+    <link rel="stylesheet" type="text/css" href=".\static\styles\header.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\course.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\course_menu.css"/>
+    <link rel="stylesheet" type="text/css" href=".\static\styles\controls.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+</head>
+<body>
+<script type="text/javascript">
+    course_id = {{data.course.id}};
+    topic_id = {{data.topic.id}};
+
+    function load_topic(topic_id){
+        window.location.href = '/course?course_id=' + course_id + '&topic_id=' + topic_id;
+    }
+</script>
+<div id="header">
+    <div class="text_name">Inno courses</div>
+</div>
+<div id="controls_header">
+    <div onclick="dashboard()" class="header_item">Dashboard</div>
+    <div onclick="logout()" class="header_item">Logout</div>
+</div>
+<div class="block_horizontal">
+    <div class="vertical-menu">
+        <div class="vertical-menu course">{{data.course.name}}</div>
+        {%for topic in data.course.topics%}
+            {% if topic.id in data.progresses %}
+                {% if topic.id == data.topic.id %}
+                    <div onclick="load_topic({{topic.id}})" class="vertical-menu item selected finished">{{topic.name}}</div>
+                {% else %}
+                    <div onclick="load_topic({{topic.id}})" class="vertical-menu item finished">{{topic.name}}</div>
+                {% endif %}
+            {% else %}
+                {% if topic.id == data.topic.id %}
+                    <div onclick="load_topic({{topic.id}})" class="vertical-menu item selected">{{topic.name}}</div>
+                {% else %}
+                    <div onclick="load_topic({{topic.id}})" class="vertical-menu item">{{topic.name}}</div>
+                {% endif %}
+            {% endif %}
+        {%endfor%}
+</div>
+    <div style="padding:12px;">
+        <div id="topic_name" class="topic_name">{{data.topic.name}}</div>
+        <p>
+        <div id="topic_content" class="topic_text">{{data.topic.content}}</div>
+        <div id="topic_questions" class="topic_text">
+            {% if data.topic.questions|length > 0 %}
+                <br>
+                <div class="quiz_text">Quiz</div>
+                <script type="text/javascript">
+                    var answers = {}
+
+                    function check_answers(){
+                        ans = JSON.stringify(answers)
+                        var request = new XMLHttpRequest();
+                        request.open("GET", '/check_answers?course=' + course_id + '&topic=' + topic_id + '&answers=' + ans);
+                        request.send();
+
+                        request.onreadystatechange = function() {
+                            if (request.readyState === 4) {
+                                if (request.status === 200) {
+                                    response = JSON.parse(request.response);
+                                    if (response["correct"]){
+                                        window.location.href = '/course?course_id=' + course_id;
+                                    }
+                                    else {
+                                        alert("Incorrect.");
+                                    }
+                                }
+                                else {
+                                    alert("Error: " + request.status);
+                                }
+                            }
+                        }
+                    }
+                </script>
+                {%for question in data.topic.questions%}
+                    <p>
+                    <div>
+                        {{question.text}}
+                        <div style="padding-left:20px;">
+                            {%for answer in question.answers%}
+                                <p>
+                                <div class="text">
+                                    <input type="radio" onclick="answers[{{question.id}}] = {{answer.id}}" id="{{answer.id}}" name="{{question.id}}" value="{{answer.id}}">
+                                    <label for="{{answer.id}}">{{answer.text}}</label>
+                                    <br>
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                {%endfor%}
+                <button onclick="check_answers()" class="input_button" type="submit" value="Submit">Submit</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
