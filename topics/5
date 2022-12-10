@@ -1,0 +1,29 @@
+Stream text editors
+❏ SED	❏ AWK
+Can be used in:
+- Logs processing and aggregation (e.g. IPs, user accounts etc)
+- Bulk text processing (changing a variable in the code repo)
+- Masquerading sensitive information (e.g. find and substitute user names, private data etc)
+
+AWK
+❏ Powerful tool for processing and analyzing text of data files which are organized by lines  (rows or records) and columns (fields)
+❏ Stream editor that allows to aggregate data with predefined actions/patterns before and  after text is processed
+❏ May match regular expressions (but SED is more popular for it)
+❏ Variables (including lists and dicts) – may be used for data analysis
+❏ Splits line by a field separator (FS)
+❏ Allows to use fields as variables – $0, $1, …, $NF
+❏ Has various useful String-Manipulation Functions
+❏ Full info - https://www.gnu.org/software/gawk/manual/html_node/index.html
+
+SED
+❏ SED - works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors.
+❏ Print lines with a specific pattern
+❏ Remove lines that contain a specific pattern
+❏ Print/remove specific range of lines
+❏ Various substitutions
+❏ Rewrite initial file
+❏ Capture groups 
+❏ https://www.gnu.org/software/sed/manual/sed.html
+
+Regular Expression - Regex
+A regular expression is a sequence of characters that specifies a search pattern in text. Usually such patterns are used by string-searching algorithms for "find" or "find and replace" operations on strings, or for input validation. 

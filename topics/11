@@ -1,0 +1,31 @@
+Logging: /var/log/
+❏ historically, Linux has a special directory for storing logs called /var/log
+❏ It contains logs from the OS, services, and various applications running on the system.
+
+Most of the log can be splitted as:
+System logs: syslog, messages(Redhat), dmesg 
+Application logs: apache/httpd, nginx, vbox
+Event Logs: auth.log, boot.log
+Service Logs: cron
+
+Typical structure for system logs includes:
+❏ timestamp
+❏ hostname
+❏ service name (facility)
+❏ message
+
+Examples:
+Auth.log:
+❏ Keep authentication logs for both successful or failed logins, and authentication processes (such as switching users, using sudo etc) 
+❏ Storage depends on system type. For Debian/Ubuntu, look in /var/log/auth.log. For Redhat/CentOS, go to /var/log/secure.
+lastlog:
+❏ /var/log/lastlog: holds every user’s last login. A binary file you can read via lastlog command. (only works when logged into login tty, Gnome based login is not shown
+
+Login, logouts, failure attempts, tty 
+There are 3 files that records relevant information:
+❏ /var/run/utmp will give you complete picture of current users logins at which terminals, logouts, system events and current status of the system, system boot time (used by uptime) etc.
+	❏ $w and $who - uses utmp to provide relevant data
+❏ /var/log/wtmp gives historical data of utmp
+	❏ $last - uses wtmp by default
+❏ /var/log/btmp records only failed login attempts
+	❏ $lastb - uses btmp

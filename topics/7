@@ -1,0 +1,18 @@
+Main definitions of shells:
+❏ Interactive - means that the commands are run with user-interaction from the keyboard (e.g. prompt the user to  enter input)
+❏ Non-interactive - type of shell that doesn’t interact with the user. We can run it through a script or similar. Also, it  can be run through some automated process. 
+❏ Login - shell is run as part of the login of the user to the system (e.g. ssh), Typically used to do any configuration that  a user needs to establish shell environment
+❏ Non-login - any other shell run by the user after logging on, or which is run by any automated process which is not  coupled to a logged in user
+
+Types of shell configuration files:
+❏ /etc/profile: - sets the environment information for each user of the system. When the user logs in for the first time, the fileis run. The shell options are collected from a configuration file in the /etc/profile.d directory
+❏ /etc/bash.bashrc:- run this file for every user running a bash shell. When the bash shell is opened, the file is read
+❏ ~/.profile:- each user can use this file to enter shell information for their own use. When the user logs in, the file is executedonly once! By default, it sets some environment variables and runs the user's .bashrc file.
+❏ ~/.bashrc:- this file contains information about bash specific to your bash shell, which is read at login and every time you opena new shell
+❏ ~/.bash_logout:- every time you logout (logout from the bash login shell) file is run. It clears the screen whenever you logout. Without .bash_logout whatever you were working on could be visible for the next user
+
+$set - Setting your shell environment, allows you to control the behavior  of your scripts by managing specific flags and properties.
+❏ Use $set - to view your current local shell settings and  environment variables (not exported). Including exported use  $env
+❏ Assign your positional parameters (e,g, $1 $2 $3) that you can use  in the scripts
+❏ Use $set -C - prevent to writing to a file (to prevent possible  accident)
+❏ Use $set -x and $set +x to debug your script. Additionally can  include $set -e so script exists on the first failure

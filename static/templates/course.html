@@ -55,7 +55,7 @@
     <div style="padding:12px;">
         <div id="topic_name" class="topic_name">{{data.topic.name}}</div>
         <p>
-        <div id="topic_content" class="topic_text">{{data.topic.content}}</div>
+        <div id="topic_content" class="topic_text" style="white-space: pre-wrap;">{{data.topic.content}}</div>
         <div id="topic_questions" class="topic_text">
             {% if data.topic.questions|length > 0 %}
                 <br>

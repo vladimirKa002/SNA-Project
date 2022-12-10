@@ -1,0 +1,37 @@
+Cron - is the common name for the service to schedule tasks such as regular backups, system updates etc. 
+The cron daemon (cron.service) is the background service that enables cron functionality.
+
+The cron daemon checks for special files called “crontabs” as follows:
+1. /var/spool/cron/crontabs/ - individual user tasks
+❏ $crontab -e - put tasks here under current user
+❏ $crontab -l - display current tasks for the user in std output 
+❏ $crontab -u <username> - run crontab under specific user (require root privileges)
+2. /etc/cron.d/ - placement for system services and applications that will put crontabs there
+3. /etc/crontab - system-wide tasks, usually only used by root user or daemons to configure system wide jobs.
+
+To configure system wide jobs with the crontab file:
+❏ First, the environment must be defined. SHELL=/bin/bash. If the SHELL line is omitted, cron will use the default, which is sh
+❏ PATH=/where/the/executable. If the PATH variable is omitted, no default will be used and file location to be executed will need to have an absolute path 
+❏ HOME=/where/the/app. If HOME is omitted, cron will use the invoking user home directory. Some programs require additional files to be read for execution and use $HOME env.
+❏ MAILTO=”” value can be empty, root or contains particular email where to send notifications
+
+By the initial design crontab file will run as follows:
+❏ /etc/cron.*/ {cron.hourly|cron.daily|cron.weekly|cron.monthly}
+- in the /etc/crontab file, cron will run scripts timely in accordance with the directories. 
+❏ Scripts should be defined as executables without *.sh extension as they will be processed by run-parts command that takes directory as the argument where those executables are
+
+ Limit access to the crontab executable (cron jobs)
+❏ Based on existence of /etc/cron.allow and /etc/cron.deny, user is allowed or denied to edit the crontab in below sequence:
+	❏ If cron.allow exists - only users listed into it can use crontab
+	❏ If cron.allow does not exist - all users except the users listed into cron.deny can use crontab
+	❏ If neither of the file exists - only the root can use crontab
+	❏ If a user is listed in both cron.allow and cron.deny - that user can use crontab.
+
+Daemon (anacron.service) - performs the same function as cron, but it adds the ability to run jobs that were skipped, such as if the computer was off. 
+The syntax of anacron is as follows:
+❏ period - is the frequency of the task execution, specified in days or as @daily, @weekly, or @monthly for once a day, week, or month, respectively. You can also use numbers: 1 for daily, 7 for weekly, 30 for monthly, and N for the number of days.
+❏ delay - is the number of minutes to wait before executing the job.
+❏ job-id - is the name for the job, as will be recorded in the log files.
+
+The scheme of the anacron work is the following:
+❏ On Debian systemd-based systems, anacron daemon as defined in /lib/systemd/system/anacron.service will run jobs in accordance with the schedule configured in /lib/systemd/system/anacron.timer - this file provides systemd timer for anacron. By default the service is triggered hourly through systemd timer

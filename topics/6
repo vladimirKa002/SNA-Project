@@ -1,0 +1,25 @@
+Why do we need shell scripts:
+❏ To avoid repetitive work and automation
+❏ System engineers use shell scripting for routine backups, daily tasks etc
+❏ System monitoring
+❏ Adding new functionality to the shell
+❏ Shell language is used in many DevOps technologies to execute tasks in the environment
+
+What are the limitations of shell scripts:
+❏ Prone to costly errors, a single mistake can change the command which might be harmful
+❏ Slow execution speed
+❏ Not well suited for large and complex task
+❏ Provide minimal data structure unlike other scripting languages
+
+Define a bash script 
+❏ You can use plain Bourne shell (/bin/sh) when special features of Bash (/bin/bash) are not needed
+❏ Bourne shell is proprietary code, whereas Bash is open source
+❏ Note that Bourne shell (/bin/sh) is usually just a symlink to dash (/usr/bin/dash) on Linux systems
+❏ dash is a POSIX-compliant implementation of /bin/sh that aims to be as small as possible
+
+❏ Bash script is a just a list of consequent commands
+❏ The #!/bin/bash tells the shell to invoke /bin/bash to run  the script
+❏ Use it at the beginning of the script file
+❏ Script Execution:
+❏ $ bash script_name
+❏ $ chmod u+x First.sh && ./script_name.sh

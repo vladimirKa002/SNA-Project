@@ -1,0 +1,15 @@
+Linux is a free and open source operating system.
+❏ At it’s core, the Linux operating system is derived from the Unix OS.
+❏ Unix was created in the 1960s by Dennis Ritchie and Ken Thompson
+❏ both of them also invented the C programming language (Unix was rewritten in C in 1973)
+
+1. Modularity: Write simple parts connected by clean interfaces
+2. Clarity: Clarity is better than cleverness
+3. Composition: Design programs to be connected with other programs
+4. Simplicity: Design for simplicity; add complexity only when you must
+5. Transparency: Design for visibility to make inspection and debugging easier
+6. Robustness: Is the child of simplicity and transparency
+7. Diversity: Distrust all claims for “one true way”
+8. Extensibility: Design for the future, because it will be here sooner than you think
+
+GNU - is a Unix-like operating system. The development of GNU, started in January 1984, is known as the GNU Project. That means it is a collection of many programs: applications, libraries, developer tools, even games. Originally they were developed for UNIX kernel

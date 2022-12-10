@@ -1,0 +1,32 @@
+Process is:
+❏ the instance of a computer program that is being 
+executed by one or many threads.
+
+Process encapsulates:
+❏ Process memory space:
+❏ Text - code of the program
+❏ Data - global vars 
+❏ Heap - dynamically allocated global vars during run time
+❏ Stack - function params, return addresses, local variables
+❏ Operating system
+❏ File descriptors (FDs)
+❏ Security attributes - process owner and the process' set of permissions (allowable operations).
+❏ Processor state (context) - reserved registers (e.g. Program Counter that stores next instruction to execute
+
+Process 
+OS abstraction is used to encapsulate all of the required process data in an address  space. The address space is defined by a range of address from V0 to some Vmax, and different types of process state will appear in different part of this address space. The page table maintains the mapping from virtual address to the physical address (RAM or Disk), it also validates whether a particular memory access request by a process is allowed to perform or not.
+
+Process Control Block (PCB) - data structure that operating system maintains for every single process to maintain all of the process data for every single processPCB is created at the very moment a process is created with some initializations like PC points to the first instruction that needs to be executed.
+PCB must contain process states like: program counter, stack pointer, all the value of the CPU register, various memory mapping from virtual to physical memory, it may also include a list of open files etc.
+During interrupts when OS wants to switch from one process to another - loading and restoring values of fields of PCB to registers (for both processes) is happening, which is also known as context switchingOS maintains pointers to each process’s PCB in a process table so that it can access the PCB quickly.
+
+Process states
+❏ New - initial state when process first run (allocation of PCB)
+❏ Ready (runnable) - waiting in a queue to be assigned to a processor
+❏ Running - once assigned by the OS scheduler, the processor executes its instructions
+❏ Sleeping (waiting) - waiting for some events such as I/O, keyboard interrupts etc
+❏ Terminated - once process finishes execution or encounters some errors, then is moved to be removed from the main memory
+❏ Stopped - once process receive the signal to stop its execution
+
+POSIX signals
+An IPC mechanism used in Unix to indicate that a particular event has occurred. A signal is a short messages sent to a process, or group of processes, containing the number identifying the signal. No data is delivered with traditional signals.

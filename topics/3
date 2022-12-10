@@ -1,0 +1,27 @@
+Network engineers design and implement network configurations, troubleshoot performance issues, carry out network monitoring and configure security systems such as firewalls.
+
+OS Boot Process
+BIOS/UEFI(Platform init) -> POST(Power on Self Test) -> Bootloader(Find and load OS kernel) -> Kernel(Initialize HW for kernel space)
+
+Most storage devices (HDDs, SSDs, flash drives, CD/DVD, etc) write and read data in blocks. 
+S.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology) is an internal monitoring and reporting technology built into most modern hard drives. Its main purpose is to detect anomalies and predict failure.
+
+Memory Management:
+Virtual Memory - OS shows the process that it owns all memory on the computer
+Resident Memory - part of the real, physical memory that consumed by the process
+Kernel I/O buffers and cache - memory used for I/O data storage/caching
+Swap - on-disk additional memory emulation (optional)
+
+Virtual file systems:
+Virtual files represent objects that are not files, but can be managed like files. Examples:
+❏ named pipes
+❏ unix socket files
+Virtual file systems are used to represent object hierarchies using virtual files. Examples:
+❏ /proc/self/fd/0 - standard input
+❏ /dev/stdin - standard input
+Main Principle - “Everything is a file”
+❏ Sysfs(/sys) - kernel parameters (sysctl)
+❏ Procfs(/proc) - processes and process management related parameters
+❏ Devfs(/dev) - devices as files
+❏ Named pipes and sockets
+

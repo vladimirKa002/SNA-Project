@@ -42,7 +42,7 @@
             </div>
             <br>
             <div class="topic_text">
-                {{course.description}}
+                <div style="white-space: pre-wrap;" id="course{{course.id}}_description">{{ course.description }}</div>
                 <br>
                 <br>
                 {{(data.courses_progress[course.id])|round | int}}% complete

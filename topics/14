@@ -1,0 +1,45 @@
+Version (Source) Control
+Set of tools and practices that allow to:
+❏ Track and manage changes to the software code
+❏ Provide changes with some kind of metadata (who, when and why)
+❏ Keep code in a centralized storage
+❏ Work concurrently on the same codebase
+❏ Create a foundation for DevOps
+
+Some software provides possibility to follow Version Control practices by:
+❏ A complete long-term change history of a file
+❏ Branching and merging (and similar concepts)
+❏ Having an annotated history of the code
+Examples: GIT, Subversion, Perforce
+
+GIT Repository
+❏ Object database
+❏ Snapshot-based SCM
+❏ Commit – recorded set of changes in the 
+repo:
+	❏ Current state snapshot
+	❏ Metadata
+	❏ Link to previous commit
+
+git add - makes files to be tracked by git from the working directory
+
+Initialize Repository:
+❏ $git init - initialize directory as a git repository’
+❏ $git clone <remote_repo> - create a local copy of a remote repository (i.e. download to your workspace)
+Setting up your git personal information - set name and email so that the commits can associate with your user account (this config will be a global and stored in the home dir of the user ~/.gitconfig). However, it can be replaced by the local git config configuration once you do it in the working directory without --global option. 
+❏ $git config --global user.name “<name>”
+❏ $git config --global user.email “email@abc.com”
+Save the current index (staging) as a snapshot and commit to the project’s history
+❏ $git commit -m “description of the change” - commit the changes
+❏ $git commit -am “description of the change” - automatically add all modified files to the staging and commits
+❏ $git commit --amend - allows to modify last commit and log message (reverse it back)
+
+git is a content-addressable filesystem - which stores data as a key-value pair. You can retrieve the content by the key
+
+Commit object type - the commit object contains the directory tree object hash, parent commit hash, author, committer, date and message.
+Tree object type - tree object contains one line per file or subdirectory, with each line giving file permissions, object type, object hash and filename. Object type is usually one of “blob” for a file or “tree” for a subdirectory
+Blob object type - Blob is an abbreviation for “binary large object”. When we $git add <a file> such as test.txt, git creates a blob object containing the contents of the file. Blobs are therefore the git object type for storing files.
+Tag object type (optional) - The tag object type contains the hash of the tagged object, the type of tagged object (usually a commit), the tag name, author, date and messae
+
+Branch - is a moving pointer to some commit. Each time you commit, the pointer moves forward to the last commit.
+Tag - is a static pointer to some commit. It’s designed to be static and may be moved only forcefully (bad practice)

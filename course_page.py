@@ -111,9 +111,11 @@ def check_answers():
         from flask_login import current_user
         user = current_user
 
-        progress = Progress(topic_id=topic_id, course_id=course_id, user_id=user.login)
-        session.add(progress)
-        session.commit()
+        progress = Progress.query.filter_by(topic_id=topic_id, course_id=course_id, user_id=user.login).first()
+        if progress is None:
+            progress = Progress(topic_id=topic_id, course_id=course_id, user_id=user.login)
+            session.add(progress)
+            session.commit()
 
     return app.response_class(
         response=json.dumps({'correct': correct}),

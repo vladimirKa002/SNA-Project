@@ -1,0 +1,41 @@
+Time and timezone are very important while searching through logs, synchronize with the remote distributed systems and keepeverything up to date
+
+timedatectl - is a utility for controlling the system time and date. 
+The timedatectl command allows you to query and change the configuration of the system clock and its settings, you can use this command to set or change the current date, time, and timezone or enable automatic system clock synchronization with a remote NTP server.
+
+❏ RTC time - hardware clock from motherboard, it works regardless of the state of OS (even during turn off)
+❏ $tzselect - select a time zone interactively (can be used instead of timedatectl list-timezones)
+❏ for some weather seasons there are switching time in hours, -> it's better to always use NTP
+❏ $timedatectl set-ntp false OR true - to enable system clock synchronization
+
+The Network Time Protocol (NTP) - is a networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks. 
+
+chrony is a pair of programs (NTP client/server) for maintaining the accuracy of computer clocks
+chronyd is a background daemon program that can be started at boot time
+Configuration file: /etc/chrony.conf
+
+Installation and configuring chronyd as an NTP client:
+❏ $yum install chrony
+❏ $systemctl start chronyd.service
+❏ $systemctl enable chronyd
+❏ $systemctl daemon-reload
+❏ $timedate set-ntp true # enable synchronization via chronyd
+❏ $timedate set-ntp false # disable synchronization via chronyd
+
+chronyc is command-line interface for chronyd daemon
+❏ chronyc sources -v # check NTP sources with description
+❏ chronyc tracking # displays parameters about the system’s clock performance
+
+The RPM Package Manager (RPM) is a package management system used by Red Hat Linux and its derivatives such as CentOS and Fedora.
+RPM also refers to the $rpm command and .rpm file format. An RPM Package consists of an archive of files and metadata. It can contain the following:
+❏ Binary files, also known as executables (nmap, stat, xattr, ssh, sshd, etc.)
+❏ Configuration files (sshd.conf, updatedb.conf, logrotate.conf, etc.)
+❏ Documentation files (README, TODO, AUTHOR, etc.)
+The name of an RPM package follows this format:
+<name>-<version>-<release>.<arch>.rpm
+
+Yum - is the Red Hat package manager that can query for information about available packages, fetch packages from repositories, install and uninstall them, and update an entire system to the latest available version. 
+Yum performs automatic dependency resolution on packages you are updating, installing, or removing, and thus it can automatically determine, fetch, and install all available dependent packages 
+
+A Debian "package", or a Debian archive file is an analog of RPM package, but for Debian based system, like Ubuntu. These packages contain the executable files, libraries, and documentation associated with a particular suite of program or set of related programs. 
+Normally, a Debian archive file has a filename that ends in .deb

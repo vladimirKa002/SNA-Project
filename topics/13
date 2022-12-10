@@ -1,0 +1,20 @@
+Containerization is an opportunity to run isolated processes in a protected environment.
+A container is a sandboxed application with all of its dependencies included, so the application runs quickly and reliably from one computing environment to another.
+
+Virtualization 					Containerization
+Hardware level virtualization   Operating system virtualization
+Abstracts OS from hardware 		Abstracts Application from OS
+Heavyweight 					Lightweight
+Minutes to startup 				Few seconds to startup
+More secure and isolated 		Less secure and isolated
+
+❏ Docker daemon (dockerd) - listens for docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services. 
+❏ Docker client (docker) - is the primary way when users interact with Docker. 
+❏ Docker registries - stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on DockerHub by default. 
+❏ Images - an image is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization.
+❏ Containers - is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API or CLI.
+
+Containerd - is a high-level container runtime that came from Docker, and implements the CRI spec. It pulls images from registries, manages them and then hands over to a lower-level runtime, which actually creates and runs the container processes (to runc). 
+Runc - is an OCI-compatible container runtime. It implements the OCI specification and runs the container processes. 
+
+An image - is a read-only template with instructions for creating a Docker container.
