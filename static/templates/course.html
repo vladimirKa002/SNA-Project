@@ -74,7 +74,7 @@
                                 if (request.status === 200) {
                                     response = JSON.parse(request.response);
                                     if (response["correct"]){
-                                        window.location.href = '/course?course_id=' + course_id;
+                                        window.location.href = '/course?course_id=' + course_id + '&topic_id=' + topic_id;
                                     }
                                     else {
                                         alert("Incorrect.");
